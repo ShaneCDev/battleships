@@ -1,3 +1,13 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+def create_board():
+    """
+    Creates the game board
+    """
+    height = int(input("How high would you like the grid to be?\n"))
+    width = int(input("How wide would you like the grid to be?\n"))
+    
+    grid = [[row, col] for row in range(height) for col in range(width)]
+
+    print(grid)
+
+
+create_board()
