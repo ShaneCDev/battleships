@@ -10,8 +10,9 @@ import sys
 letters_to_numbers = {
     'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7
 }
-GUESS_BOARD = [[" "]*8 for i in range(8)]
-COMPUTER_BOARD = [[" "]*8 for i in range(8)]
+
+GUESS_BOARD_LARGE = [[" "]*8 for i in range(8)]
+COMPUTER_BOARD_LARGE = [[" "]*8 for i in range(8)]
 GRID_ALPHABET = 'ABCDEFGH'
 
 
@@ -46,8 +47,7 @@ def print_board(board):
 
 def create_ships(comp_board):
     """
-    Lets the user create ships and creates
-    ships for the computer.
+    Creates ships for the computer.
     """
     print("Enter the coordinates you would like to place your ships.")
     print("Separate each coordinate with a comma, eg. A,4")
@@ -59,6 +59,27 @@ def create_ships(comp_board):
         comp_board[ship_row][ship_column] = "~"
     
 
-create_ships(COMPUTER_BOARD)
-print_board(COMPUTER_BOARD)
+def user_select_grid_size():
+    """
+    Lets user select the size of the grid
+    """
+    print("How big or small would you like the grid to be?")
+    print("Small: 3x3, Medium: 5x5, Large: 7x7?")
+    print("Choose the size by typing S/M/L")
+    grid_size = input().upper()
+    
+    row_num = 1
+
+    if grid_size == "S":
+        print(" A B C")
+        print(" +-+-+")
+        small_board = [[" "]*4 for i in range(4)]
+        for row in small_board:
+            print(f'{row_num} {"|".join(row)}')
+            row_num += 1
+        return small_board
+    
+            
+user_select_grid_size()
+
 
