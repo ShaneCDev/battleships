@@ -1,13 +1,41 @@
-def create_board():
+import random
+import os
+import sys
+
+letters_to_numbers = {
+    'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7
+}
+GUESS_BOARD = [[" "]*8 for i in range(8)]
+
+
+def welcome_message():
     """
-    Creates the game board
+    Welcome message for the user explaining the rules
+    of the game
     """
-    height = int(input("How high would you like the grid to be?\n"))
-    width = int(input("How wide would you like the grid to be?\n"))
-    
-    grid = [[row, col] for row in range(height) for col in range(width)]
+    print("Welcome to battleships!")
+    print("Just some stuff to go over before we begin.")
+    print("Ships must be placed vertically or horizontally - not diagonally.")
+    print("Ships can not hang off the grid.")
+    print("Ships can touch each other but not occupy the same grid space.")
+    print("You can not change ships postions once the game has begun.")
+    print("Both players take turns firing shots by using grid coordinates.")
+    print("The first person to sink all of your opponents ships wins!")
+    print("With that being said, good luck!")
 
-    print(grid)
+
+def print_board(board):
+    """
+    Prints game board
+    """
+    print("  A B C D E F G H")
+    print("  +-+-+-+-+-+-+-+")
+    row_num = 1
+    for row in board:
+        print(f'{row_num} {"|".join(row)}')
+        row_num += 1
+    return board
 
 
-create_board()
+
+
