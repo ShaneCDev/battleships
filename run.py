@@ -65,7 +65,7 @@ def user_select_grid_size():
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
         return small_board
-    elif grid_size == "M":
+    if grid_size == "M":
         print("  A B C D E")
         print("  +-+-+-+-+")
         medium_board = [[" "]*5 for i in range(5)]
@@ -73,7 +73,7 @@ def user_select_grid_size():
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
         return medium_board
-    elif grid_size == "L":
+    if grid_size == "L":
         print("  A B C D E F G H")
         print("  +-+-+-+-+-+-+-+")
         large_board = [[" "]*8 for i in range(8)]
