@@ -2,7 +2,7 @@ from random import randint
 import os
 import sys
 
-# grid sizes = 3x3, 4x4, 5x5, 7x7
+# grid sizes = 4x4, 5x5, 7x7
 # X - ship hit
 # '-' - ship miss
 # ~ - ship(s)
@@ -32,19 +32,6 @@ def welcome_message():
     print("With that being said, good luck!")
 
 
-def print_board(board):
-    """
-    Prints game board
-    """
-    print("  A B C D E F G H")
-    print("  +-+-+-+-+-+-+-+")
-    row_num = 1
-    for row in board:
-        print(f'{row_num} {"|".join(row)}')
-        row_num += 1
-    return board
-
-
 def create_ships(comp_board):
     """
     Creates ships for the computer.
@@ -64,22 +51,37 @@ def user_select_grid_size():
     Lets user select the size of the grid
     """
     print("How big or small would you like the grid to be?")
-    print("Small: 3x3, Medium: 5x5, Large: 7x7?")
+    print("Small: 4x4, Medium: 5x5, Large: 8x8?")
     print("Choose the size by typing S/M/L")
     grid_size = input().upper()
     
     row_num = 1
 
     if grid_size == "S":
-        print(" A B C")
-        print(" +-+-+")
+        print("  A B C D")
+        print("  +-+-+-+")
         small_board = [[" "]*4 for i in range(4)]
         for row in small_board:
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
         return small_board
+    elif grid_size == "M":
+        print("  A B C D E")
+        print("  +-+-+-+-+")
+        medium_board = [[" "]*5 for i in range(5)]
+        for row in medium_board:
+            print(f'{row_num} {"|".join(row)}')
+            row_num += 1
+        return medium_board
+    elif grid_size == "L":
+        print("  A B C D E F G H")
+        print("  +-+-+-+-+-+-+-+")
+        large_board = [[" "]*8 for i in range(8)]
+        for row in large_board:
+            print(f'{row_num} {"|".join(row)}')
+            row_num += 1
+        return large_board
     
             
 user_select_grid_size()
-
 
