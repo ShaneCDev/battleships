@@ -5,7 +5,11 @@ import sys
 # grid sizes = 4x4, 5x5, 7x7
 # X - ship hit
 # '-' - ship miss
-# ~ - ship(s)
+# ■ - ship(s)
+
+
+SHIP = '■'
+NAME = ''
 
 letters_to_numbers = {
     'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7
@@ -36,15 +40,13 @@ def create_ships(comp_board):
     """
     Creates ships for the computer.
     """
-    print("Enter the coordinates you would like to place your ships.")
-    print("Separate each coordinate with a comma, eg. A,4")
 
     for i in range(5):
         ship_row, ship_column = randint(0, 7), randint(0, 7)
         while comp_board[ship_row][ship_column] == "~":
             ship_row, ship_column = randint(0, 7), randint(0, 7)
         comp_board[ship_row][ship_column] = "~"
-    
+
 
 def user_select_grid_size():
     """
@@ -54,34 +56,40 @@ def user_select_grid_size():
     print("Small: 4x4, Medium: 5x5, Large: 8x8?")
     print("Choose the size by typing S/M/L")
     grid_size = input().upper()
-    
+    board = ''
     row_num = 1
 
     if grid_size == "S":
         print("  A B C D")
         print("  +-+-+-+")
-        small_board = [[" "]*4 for i in range(4)]
-        for row in small_board:
+        board = [[" "]*4 for i in range(4)]
+        for row in board:
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
-        return small_board
+
     if grid_size == "M":
         print("  A B C D E")
         print("  +-+-+-+-+")
-        medium_board = [[" "]*5 for i in range(5)]
-        for row in medium_board:
+        board = [[" "]*5 for i in range(5)]
+        for row in board:
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
-        return medium_board
+
     if grid_size == "L":
         print("  A B C D E F G H")
         print("  +-+-+-+-+-+-+-+")
-        large_board = [[" "]*8 for i in range(8)]
-        for row in large_board:
+        board = [[" "]*8 for i in range(8)]
+        for row in board:
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
-        return large_board
-    
-            
-user_select_grid_size()
 
+    return board
+
+
+def place_ships():
+    """
+    Lets user place ships and does it randomly for computer
+    """
+
+
+user_select_grid_size()
