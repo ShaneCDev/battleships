@@ -18,10 +18,26 @@ letters_to_numbers = {
 
 GRID_ALPHABET = 'ABCDEFGH'
 
-# Boards
-PLAYER_4x4, PLAYER_GUESSBOARD_4x4, COMPUTER_4x4, COMP_GUESSBOARD_4x4 = [[" "]*4 for i in range(4)]
-PLAYER_5x5, PLAYER_GUESSBOARD_5x5, COMPUTER_5x5, COMP_GUESSBOARD_5x5 = [[" "]*5 for i in range(5)]
-PLAYER_8x8, PLAYER_GUESSBOARD_8x8, COMPUTER_8x8, COMP_GUESSBOARD_8x8 = [[" "]*8 for i in range(8)]
+# Boards 4x4
+PLAYER_4x4 = [[" "]*4 for i in range(4)]
+PLAYER_GUESSBOARD_4x4 = [[" "]*4 for i in range(4)]
+COMPUTER_4x4 = [[" "]*4 for i in range(4)]
+COMP_GUESSBOARD_4x4 = [[" "]*4 for i in range(4)]
+
+# Boards 5x5
+PLAYER_5x5 = [[" "]*5 for i in range(5)]
+PLAYER_GUESSBOARD_5x5 = [[" "]*5 for i in range(5)]
+COMPUTER_5x5 = [[" "]*5 for i in range(5)]
+COMP_GUESSBOARD_5x5 = [[" "]*5 for i in range(5)]
+
+# Boards 8x8
+PLAYER_8x8 = [[" "]*8 for i in range(8)]
+PLAYER_GUESSBOARD_8x8 = [[" "]*8 for i in range(8)]
+COMPUTER_8x8 = [[" "]*8 for i in range(8)]
+COMP_GUESSBOARD_8x8 = [[" "]*8 for i in range(8)]
+
+
+LEN_OF_SHIPS = [5, 4, 3, 3, 2]
 
 
 def welcome_message():
@@ -82,9 +98,59 @@ def place_ships(board):
     """
     Lets user place ships and does it randomly for computer
     """
-    len_of_ships = [5, 4, 3, 3, 2]
-    
-
-    for ship_length in len_of_ships:
+    for ship_len in LEN_OF_SHIPS:
         if board == PLAYER_8x8:
+            place_ship = True
+            print("Place the " + str(ship_len) + " length ship")
 
+
+
+def check_out_of_bounds(ship_len, row, col, orientation, board):
+    """
+    Check and see if the ship is in a legal placement
+    """
+    if orientation == "V" and board == PLAYER_8x8:
+        if row + ship_len > 8:
+            return False
+        else:
+            return True
+    elif orientation == "H" and board == PLAYER_8x8:
+        if col + ship_len > 8:
+            return False
+        else:
+            return True
+
+    if orientation == "V" and board == PLAYER_5x5:
+        if row + ship_len > 5:
+            return False
+        else:
+            return True
+    elif orientation == "H" and board == PLAYER_5x5:
+        if col + ship_len > 5:
+            return False
+        else:
+            return True
+
+    if orientation == "V" and board == PLAYER_4x4:
+        if row + ship_len > 4:
+            return False
+        else:
+            return True
+    elif orientation == "H" and board == PLAYER_4x4:
+        if col + ship_len > 4:
+            return False
+        else:
+            return True
+
+
+def user_input(place_ship):
+    if place_ship:
+        while True:
+            try:
+                orientation = input("Would you like to place the ship " +
+                                    "horizontal" +
+                                    "or vertical? (H or V): ").upper()
+                if orientation == "H" or orientation == "V":
+                    break
+            except TypeError:
+                print("Enter 'H' or 'V' only.")
