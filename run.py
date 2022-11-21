@@ -144,6 +144,11 @@ def check_out_of_bounds(ship_len, row, col, orientation, board):
 
 
 def user_input(place_ship):
+    """
+    Function to be used within the place ships
+    function, doing it this way is a lot easier
+    for placing ships and cleaner.
+    """
     if place_ship:
         while True:
             try:
@@ -154,3 +159,13 @@ def user_input(place_ship):
                     break
             except TypeError:
                 print("Enter 'H' or 'V' only.")
+
+
+def hit_counter(board):
+    hits = 0
+    for row in board:
+        for col in board:
+            if col == "■":
+                hits += 1
+    
+    return hits
