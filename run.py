@@ -162,10 +162,14 @@ def user_input(place_ship):
 
 
 def hit_counter(board):
+    """
+    Hit counter for when a ship is hit by either
+    user or computer
+    """
     hits = 0
     for row in board:
         for col in board:
             if col == "■":
                 hits += 1
-    
+
     return hits
