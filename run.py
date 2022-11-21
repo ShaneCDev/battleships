@@ -15,9 +15,13 @@ letters_to_numbers = {
     'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7
 }
 
-GUESS_BOARD_LARGE = [[" "]*8 for i in range(8)]
-COMPUTER_BOARD_LARGE = [[" "]*8 for i in range(8)]
+
 GRID_ALPHABET = 'ABCDEFGH'
+
+# Boards
+PLAYER_4x4, PLAYER_GUESSBOARD_4x4, COMPUTER_4x4, COMP_GUESSBOARD_4x4 = [[" "]*4 for i in range(4)]
+PLAYER_5x5, PLAYER_GUESSBOARD_5x5, COMPUTER_5x5, COMP_GUESSBOARD_5x5 = [[" "]*5 for i in range(5)]
+PLAYER_8x8, PLAYER_GUESSBOARD_8x8, COMPUTER_8x8, COMP_GUESSBOARD_8x8 = [[" "]*8 for i in range(8)]
 
 
 def welcome_message():
@@ -36,18 +40,6 @@ def welcome_message():
     print("With that being said, good luck!")
 
 
-def create_ships(comp_board):
-    """
-    Creates ships for the computer.
-    """
-
-    for i in range(5):
-        ship_row, ship_column = randint(0, 7), randint(0, 7)
-        while comp_board[ship_row][ship_column] == "~":
-            ship_row, ship_column = randint(0, 7), randint(0, 7)
-        comp_board[ship_row][ship_column] = "~"
-
-
 def user_select_grid_size():
     """
     Lets user select the size of the grid
@@ -62,7 +54,7 @@ def user_select_grid_size():
     if grid_size == "S":
         print("  A B C D")
         print("  +-+-+-+")
-        board = [[" "]*4 for i in range(4)]
+        board = PLAYER_4x4
         for row in board:
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
@@ -70,7 +62,7 @@ def user_select_grid_size():
     if grid_size == "M":
         print("  A B C D E")
         print("  +-+-+-+-+")
-        board = [[" "]*5 for i in range(5)]
+        board = PLAYER_5x5
         for row in board:
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
@@ -78,7 +70,7 @@ def user_select_grid_size():
     if grid_size == "L":
         print("  A B C D E F G H")
         print("  +-+-+-+-+-+-+-+")
-        board = [[" "]*8 for i in range(8)]
+        board = PLAYER_8x8
         for row in board:
             print(f'{row_num} {"|".join(row)}')
             row_num += 1
@@ -86,10 +78,13 @@ def user_select_grid_size():
     return board
 
 
-def place_ships():
+def place_ships(board):
     """
     Lets user place ships and does it randomly for computer
     """
+    len_of_ships = [5, 4, 3, 3, 2]
+    
 
+    for ship_length in len_of_ships:
+        if board == PLAYER_8x8:
 
-user_select_grid_size()
