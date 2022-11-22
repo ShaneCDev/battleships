@@ -185,6 +185,82 @@ def check_out_of_bounds_4x4(ship_len, row, col, orientation, board):
             return True
 
 
+def ship_collision_check_8x8(row, col, ship_len, board, orientation):
+    """
+    Logic to check of ship overlapping or collision when placed
+    forces user to enter new coordinates if ships overlap/collide
+    on the 8x8 board
+    """
+    if orientation == "V":
+        for i in range(row, row + ship_len):
+            if board[i][col] == SHIP and board == PLAYER_8x8:
+                print("You already put a ship here, please try " +
+                      "a different location.\n")
+                return True
+            else:
+                # This else is for the computer
+                return True
+    else:
+        for i in range(col, col + ship_len):
+            if board[row][i] == SHIP and board == PLAYER_8x8:
+                print("You already put a ship here, please try " +
+                      "a different location.\n")
+                return True
+            else:
+                return True
+
+
+def ship_collision_check_5x5(row, col, ship_len, board, orientation):
+    """
+    Logic to check of ship overlapping or collision when placed
+    forces user to enter new coordinates if ships overlap/collide
+    on the 5x5 board
+    """
+    if orientation == "V":
+        for i in range(row, row + ship_len):
+            if board[i][col] == SHIP and board == PLAYER_5x5:
+                print("You already put a ship here, please try " +
+                      "a different location.\n")
+                return True
+            else:
+                # Else is for computer
+                return True
+    else:
+        for i in range(col, col + ship_len):
+            if board[row][i] == SHIP and board == PLAYER_5x5:
+                print("You already put a ship here, please try " +
+                      "a different location.\n")
+                return True
+            else:
+                return True
+
+
+def ship_collision_check_4x4(row, col, ship_len, board, orientation):
+    """
+    Logic to check of ship overlapping or collision when placed
+    forces user to enter new coordinates if ships overlap/collide
+    on the 4x4 board
+    """
+    if orientation == "V":
+        for i in range(row, row + ship_len):
+            if board[i][col] == SHIP and board == PLAYER_4x4:
+                print("You already put a ship here, please try " +
+                      "a different location.\n")
+                return True
+            else:
+                # Else is for computer
+                return True
+    else:
+        for i in range(col, col + ship_len):
+            if board[row][i] == SHIP and board == PLAYER_4x4:
+                print("You already put a ship here, please try " +
+                      "a different location.\n")
+                return True
+            else:
+                # Else is for computer
+                return True
+
+
 def user_input(place_ship):
     """
     Function to be used within the place ships
@@ -211,7 +287,7 @@ def hit_counter(board):
     hits = 0
     for row in board:
         for col in board:
-            if col == "■":
+            if col == SHIP:
                 hits += 1
 
     return hits
