@@ -104,53 +104,83 @@ def place_ships(board):
             print("Place the " + str(ship_len) + " length ship")
 
 
-def check_out_of_bounds_8x8(ship_len, row, col, orientation):
+def check_out_of_bounds_8x8(ship_len, row, col, orientation, board):
     """
-    Check and see if the ship is in a legal placement on the 
-    8x8 board
+    Check and see if the ship is in a legal placement
+    on the 8x8 board
     """
     if orientation == "V":
         if row + ship_len > 8:
-            return False
+            if board == PLAYER_8x8:
+                print("Ship does not fit, please try again.\n")
+                return False
+            else:
+                # above else statement is for computer out_of_bounds check
+                return False
         else:
             return True
     else:
         if col + ship_len > 8:
-            return False
+            if board == PLAYER_8x8:
+                print("Ship does not fit, please try again.\n")
+                return False
+            else:
+                # above else statement is for computer out_of_bounds check
+                return False
         else:
             return True
 
 
-def check_out_of_bounds_5x5(ship_len, row, col, orientation):
+def check_out_of_bounds_5x5(ship_len, row, col, orientation, board):
     """
     Check and see if the ship is in a legal placement on the
     5x5 board
     """
     if orientation == "V":
         if row + ship_len > 5:
-            return False
+            if board == PLAYER_5x5:
+                print("Ship does not fit, please try again.\n")
+                return False
+            else:
+                # above else statement is for computer out_of_bounds check
+                return False
         else:
             return True
     else:
         if col + ship_len > 5:
-            return False
+            if board == PLAYER_5x5:
+                print("Ship does not fit, please try again.\n")
+                return False
+            else:
+                # above else statement is for computer out_of_bounds check
+                return False
         else:
             return True
 
 
-def check_out_of_bounds_4x4(ship_len, row, col, orientation):
+def check_out_of_bounds_4x4(ship_len, row, col, orientation, board):
     """
     Check and see if the ship is in a legal placement on the
     4x4 board
     """
     if orientation == "V":
         if row + ship_len > 4:
-            return False
+            if board == PLAYER_4x4:
+                print("Ship does not fit, please try again.\n")
+                return False
+            else:
+                # above else statement is for computer out_of_bounds check
+                return False
         else:
             return True
     else:
         if col + ship_len > 4:
-            return False
+            if board == PLAYER_4x4:
+                print("Ship does not fit, please try again.\n")
+                return False
+            else:
+                # above else statement is for computer out_of_bounds check
+                return False
         else:
             return True
 
