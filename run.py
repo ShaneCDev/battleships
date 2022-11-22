@@ -104,51 +104,51 @@ def place_ships(board):
             print("Place the " + str(ship_len) + " length ship")
 
 
-def check_out_of_bounds_8x8(ship_len, row, col, orientation, board):
+def check_out_of_bounds_8x8(ship_len, row, col, orientation):
     """
     Check and see if the ship is in a legal placement on the 
     8x8 board
     """
-    if orientation == "V" and board == PLAYER_8x8:
+    if orientation == "V":
         if row + ship_len > 8:
             return False
         else:
             return True
-    elif orientation == "H" and board == PLAYER_8x8:
+    else:
         if col + ship_len > 8:
             return False
         else:
             return True
 
 
-def check_out_of_bounds_5x5(ship_len, row, col, orientation, board):
+def check_out_of_bounds_5x5(ship_len, row, col, orientation):
     """
     Check and see if the ship is in a legal placement on the
     5x5 board
     """
-    if orientation == "V" and board == PLAYER_5x5:
+    if orientation == "V":
         if row + ship_len > 5:
             return False
         else:
             return True
-    elif orientation == "H" and board == PLAYER_5x5:
+    else:
         if col + ship_len > 5:
             return False
         else:
             return True
 
 
-def check_out_of_bounds_4x4(ship_len, row, col, orientation, board):
+def check_out_of_bounds_4x4(ship_len, row, col, orientation):
     """
     Check and see if the ship is in a legal placement on the
     4x4 board
     """
-    if orientation == "V" and board == PLAYER_4x4:
+    if orientation == "V":
         if row + ship_len > 4:
             return False
         else:
             return True
-    elif orientation == "H" and board == PLAYER_4x4:
+    else:
         if col + ship_len > 4:
             return False
         else:
